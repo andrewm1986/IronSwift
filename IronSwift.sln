@@ -9,26 +9,46 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronSwift.Compiler.Lexer", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronSwift.Compiler.Lexer.Tests", "IronSwift.Compiler.Lexer.Tests\IronSwift.Compiler.Lexer.Tests.csproj", "{5DE4FE7A-3382-44E1-9B06-FD35EFE59A9F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "helpers", "helpers", "{B6C2C7AE-366D-4828-81B0-664F20794E8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fare", "..\Fare\Src\Fare\Fare.csproj", "{24033E0E-0304-4F06-94CD-6F6416ECA509}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Verify|Any CPU = Verify|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{578172AD-46D4-4D59-93D1-2EDADBF2B3FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{578172AD-46D4-4D59-93D1-2EDADBF2B3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{578172AD-46D4-4D59-93D1-2EDADBF2B3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{578172AD-46D4-4D59-93D1-2EDADBF2B3FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{578172AD-46D4-4D59-93D1-2EDADBF2B3FB}.Verify|Any CPU.ActiveCfg = Release|Any CPU
+		{578172AD-46D4-4D59-93D1-2EDADBF2B3FB}.Verify|Any CPU.Build.0 = Release|Any CPU
 		{CF5C355C-17CD-4FB4-8305-D3C963EFEAA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CF5C355C-17CD-4FB4-8305-D3C963EFEAA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF5C355C-17CD-4FB4-8305-D3C963EFEAA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF5C355C-17CD-4FB4-8305-D3C963EFEAA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF5C355C-17CD-4FB4-8305-D3C963EFEAA8}.Verify|Any CPU.ActiveCfg = Release|Any CPU
+		{CF5C355C-17CD-4FB4-8305-D3C963EFEAA8}.Verify|Any CPU.Build.0 = Release|Any CPU
 		{5DE4FE7A-3382-44E1-9B06-FD35EFE59A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5DE4FE7A-3382-44E1-9B06-FD35EFE59A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DE4FE7A-3382-44E1-9B06-FD35EFE59A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DE4FE7A-3382-44E1-9B06-FD35EFE59A9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DE4FE7A-3382-44E1-9B06-FD35EFE59A9F}.Verify|Any CPU.ActiveCfg = Release|Any CPU
+		{5DE4FE7A-3382-44E1-9B06-FD35EFE59A9F}.Verify|Any CPU.Build.0 = Release|Any CPU
+		{24033E0E-0304-4F06-94CD-6F6416ECA509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24033E0E-0304-4F06-94CD-6F6416ECA509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24033E0E-0304-4F06-94CD-6F6416ECA509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24033E0E-0304-4F06-94CD-6F6416ECA509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24033E0E-0304-4F06-94CD-6F6416ECA509}.Verify|Any CPU.ActiveCfg = Verify|Any CPU
+		{24033E0E-0304-4F06-94CD-6F6416ECA509}.Verify|Any CPU.Build.0 = Verify|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{24033E0E-0304-4F06-94CD-6F6416ECA509} = {B6C2C7AE-366D-4828-81B0-664F20794E8A}
 	EndGlobalSection
 EndGlobal

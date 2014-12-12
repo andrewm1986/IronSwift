@@ -1,9 +1,14 @@
-﻿namespace IronSwift.Compiler.Lexer.Tokens
+﻿using Fare;
+
+namespace IronSwift.Compiler.Lexer.Tokens
 {
     public abstract class Token
     {
         public string LiteralText { get; protected set; }
         public abstract string RegularExpression { get; }
+
+        private Automaton automaton;
+        public Automaton Automaton => automaton ?? (automaton = new RegExp(RegularExpression).ToAutomaton());
     }
 
     public class VarKeywordToken : Token
