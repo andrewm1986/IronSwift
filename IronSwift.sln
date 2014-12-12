@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22310.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronSwift.Compiler", "IronSwift.Compiler\IronSwift.Compiler.csproj", "{578172AD-46D4-4D59-93D1-2EDADBF2B3FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronSwift.Compiler.Lexer", "IronSwift.Compiler.Lexer\IronSwift.Compiler.Lexer.csproj", "{CF5C355C-17CD-4FB4-8305-D3C963EFEAA8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{578172AD-46D4-4D59-93D1-2EDADBF2B3FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{578172AD-46D4-4D59-93D1-2EDADBF2B3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{578172AD-46D4-4D59-93D1-2EDADBF2B3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{578172AD-46D4-4D59-93D1-2EDADBF2B3FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF5C355C-17CD-4FB4-8305-D3C963EFEAA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF5C355C-17CD-4FB4-8305-D3C963EFEAA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF5C355C-17CD-4FB4-8305-D3C963EFEAA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF5C355C-17CD-4FB4-8305-D3C963EFEAA8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
