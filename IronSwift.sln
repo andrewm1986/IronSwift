@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronSwift.Compiler", "IronS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronSwift.Compiler.Lexer", "IronSwift.Compiler.Lexer\IronSwift.Compiler.Lexer.csproj", "{CF5C355C-17CD-4FB4-8305-D3C963EFEAA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronSwift.Compiler.Lexer.Tests", "IronSwift.Compiler.Lexer.Tests\IronSwift.Compiler.Lexer.Tests.csproj", "{5DE4FE7A-3382-44E1-9B06-FD35EFE59A9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CF5C355C-17CD-4FB4-8305-D3C963EFEAA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF5C355C-17CD-4FB4-8305-D3C963EFEAA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF5C355C-17CD-4FB4-8305-D3C963EFEAA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DE4FE7A-3382-44E1-9B06-FD35EFE59A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DE4FE7A-3382-44E1-9B06-FD35EFE59A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DE4FE7A-3382-44E1-9B06-FD35EFE59A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DE4FE7A-3382-44E1-9B06-FD35EFE59A9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
