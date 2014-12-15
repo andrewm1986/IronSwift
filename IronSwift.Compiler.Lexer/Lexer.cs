@@ -17,12 +17,12 @@ namespace IronSwift.Compiler.Lexer
 
         private Lexer()
         {
-            
+
         }
 
         public static Lexer FromStream(Stream stream)
         {
-            var lexer = new Lexer {stream = stream};
+            var lexer = new Lexer { stream = stream };
 
             return lexer;
         }
@@ -32,26 +32,107 @@ namespace IronSwift.Compiler.Lexer
             EnsureStreamIsOpen();
             EnsureTokenTypesAreLoaded();
 
-            var possibleTokens = tokenTypes.ToDictionary(t => t, t => t.Automaton.Initial);
-            
+            var possibleTokens = (from t in tokenTypes
+                                  select new TokenState
+                                  {
+                                      Token = t,
+                                      InitialState = t.Automaton.Initial,
+                                      CurrentState = t.Automaton.Initial,
+                                      PreviousState = null,
+                                      NextState = null,
+                                  }).ToList();
+
             int readValue;
+            var buffer = new StringBuilder();
             while ((readValue = stream.ReadByte()) != -1)
             {
-                foreach (var token in possibleTokens.ToList())
+                var yieldedToken = ProcessCharacter(possibleTokens, (char)readValue, ref buffer);
+
+                if (yieldedToken != null)
                 {
-                    var nextStep = token.Value.Step((char) readValue);
-                    if (nextStep == null && !token.Value.Accept)
-                    {
-                        possibleTokens.Remove(token.Key);
-                    }
-                    else
-                    {
-                        possibleTokens[token.Key] = nextStep;
-                    }
+                    yield return yieldedToken;
+                }
+            }
+
+            // Now we check for any tokens that end with the stream
+            // Did we end the stream with any valid tokens?
+            var finishedTokens = possibleTokens.Where(t => t.CurrentState != null && t.CurrentState.Accept).ToList();
+
+            // ... no
+            if (!finishedTokens.Any()) yield break;
+
+            // ... yes
+            // Which token did we match? Based on priority
+            // i.e var is a keyword, not an indentifier
+            var matchedToken = finishedTokens.OrderBy(t => t.Token.Priority).First();
+
+            // Generate a new copy of the token
+            yield return matchedToken.Token.FromText(buffer.ToString());
+        }
+
+        private static Token ProcessCharacter(List<TokenState> possibleTokens, char character, ref StringBuilder buffer)
+        {
+            Token yieldedToken = null;
+
+            // Generate next steps
+            foreach (var token in possibleTokens.Where(t => t.CurrentState != null))
+            {
+                token.NextState = token.CurrentState.Step(character);
+            }
+
+            // Did this character make any previously accepted token turn invalid?
+            var finishedTokens = possibleTokens.Where(t => t.CurrentState != null && t.CurrentState.Accept && t.NextState == null).ToList();
+
+            if (finishedTokens.Any())
+            {
+                // ... yes
+
+                // Which token did we match? Based on priority
+                // i.e var is a keyword, not an indentifier
+                var matchedToken = finishedTokens.OrderBy(t => t.Token.Priority).First();
+
+                // Generate a new copy of the token
+                yieldedToken = matchedToken.Token.FromText(buffer.ToString());
+
+                // Reset all the tokens to their initial state
+                foreach (var token in possibleTokens)
+                {
+                    token.CurrentState = token.InitialState;
+                    token.PreviousState = token.NextState = null;
                 }
 
-                yield return new SingleEqualsToken();
+                // Reset the buffer
+                buffer = new StringBuilder();
+
+                // We read a character in from the stream but haven't processed it properly
+                // So we need to process it again
+                ProcessCharacter(possibleTokens, character, ref buffer);
             }
+            else
+            {
+                // ... no
+
+                // Progress each token's state
+                foreach (var token in possibleTokens)
+                {
+                    token.PreviousState = token.CurrentState;
+                    token.CurrentState = token.NextState;
+                }
+
+                // Store the character
+                buffer.Append(character);
+            }
+
+            return yieldedToken;
+        }
+
+        private class TokenState
+        {
+            public Token Token { get; set; }
+            public State InitialState { get; set; }
+            public State PreviousState { get; set; }
+            public State CurrentState { get; set; }
+            public State NextState { get; set; }
         }
 
         private void EnsureTokenTypesAreLoaded()
@@ -62,7 +143,7 @@ namespace IronSwift.Compiler.Lexer
             }
 
             tokenTypes = Assembly.GetAssembly(GetType())
-                .DefinedTypes.Where(t => t.IsSubclassOf(typeof (Token)))
+                .DefinedTypes.Where(t => t.IsSubclassOf(typeof(Token)))
                 .Select(t => Activator.CreateInstance(t.AsType()))
                 .Cast<Token>()
                 .ToList();
