@@ -25,6 +25,42 @@ namespace IronSwift.Compiler.Lexer.Tokens
         }
     }
 
+    public class OpenParenthesisToken : Token
+    {
+        public override string RegularExpression => "\\(";
+
+        public override int Priority { get; } = 0;
+
+        public override Token FromText(string literalText)
+        {
+            return new OpenParenthesisToken { LiteralText = literalText };
+        }
+    }
+
+    public class CloseParenthesisToken : Token
+    {
+        public override string RegularExpression => "\\)";
+
+        public override int Priority { get; } = 0;
+
+        public override Token FromText(string literalText)
+        {
+            return new CloseParenthesisToken { LiteralText = literalText };
+        }
+    }
+
+    public class CommaToken : Token
+    {
+        public override string RegularExpression => ",";
+
+        public override int Priority { get; } = 0;
+
+        public override Token FromText(string literalText)
+        {
+            return new CommaToken { LiteralText = literalText };
+        }
+    }
+
     public class LetKeywordToken : Token
     {
         public override string RegularExpression => "let";
