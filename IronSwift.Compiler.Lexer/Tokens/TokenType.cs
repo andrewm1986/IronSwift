@@ -4,7 +4,6 @@ namespace IronSwift.Compiler.Lexer.Tokens
 {
     public abstract class TokenType
     {
-        public string LiteralText { get; protected set; }
         public abstract string RegularExpression { get; }
         public abstract int Priority { get; }
 
