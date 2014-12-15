@@ -13,7 +13,7 @@ namespace IronSwift.Compiler.Lexer
     public class Lexer
     {
         private Stream stream;
-        private static IList<Token> tokenTypes;
+        private static IList<TokenType> tokenTypes;
 
         private Lexer()
         {
@@ -128,7 +128,7 @@ namespace IronSwift.Compiler.Lexer
 
         private class TokenState
         {
-            public Token Token { get; set; }
+            public TokenType Token { get; set; }
             public State InitialState { get; set; }
             public State PreviousState { get; set; }
             public State CurrentState { get; set; }
@@ -143,9 +143,9 @@ namespace IronSwift.Compiler.Lexer
             }
 
             tokenTypes = Assembly.GetAssembly(GetType())
-                .DefinedTypes.Where(t => t.IsSubclassOf(typeof(Token)))
+                .DefinedTypes.Where(t => t.IsSubclassOf(typeof(TokenType)))
                 .Select(t => Activator.CreateInstance(t.AsType()))
-                .Cast<Token>()
+                .Cast<TokenType>()
                 .ToList();
         }
 

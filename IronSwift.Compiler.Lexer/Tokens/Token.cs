@@ -5,125 +5,80 @@ namespace IronSwift.Compiler.Lexer.Tokens
     public abstract class Token
     {
         public string LiteralText { get; protected set; }
-        public abstract string RegularExpression { get; }
-        public abstract int Priority { get; }
 
-        private Automaton automaton;
-        public Automaton Automaton => automaton ?? (automaton = new RegExp(RegularExpression).ToAutomaton());
-
-        public abstract Token FromText(string literalText);
+        protected Token(string literalText)
+        {
+            LiteralText = literalText;
+        }
     }
 
     public class VarKeywordToken : Token
     {
-        public override string RegularExpression => "var";
-
-        public override int Priority { get; } = 0;
-        public override Token FromText(string literalText)
+        public VarKeywordToken(string literalText) : base(literalText)
         {
-            return new VarKeywordToken { LiteralText = literalText };
         }
     }
 
     public class OpenParenthesisToken : Token
     {
-        public override string RegularExpression => "\\(";
-
-        public override int Priority { get; } = 0;
-
-        public override Token FromText(string literalText)
+        public OpenParenthesisToken(string literalText) : base(literalText)
         {
-            return new OpenParenthesisToken { LiteralText = literalText };
         }
     }
 
     public class CloseParenthesisToken : Token
     {
-        public override string RegularExpression => "\\)";
-
-        public override int Priority { get; } = 0;
-
-        public override Token FromText(string literalText)
+        public CloseParenthesisToken(string literalText) : base(literalText)
         {
-            return new CloseParenthesisToken { LiteralText = literalText };
         }
     }
 
     public class CommaToken : Token
     {
-        public override string RegularExpression => ",";
-
-        public override int Priority { get; } = 0;
-
-        public override Token FromText(string literalText)
+        public CommaToken(string literalText) : base(literalText)
         {
-            return new CommaToken { LiteralText = literalText };
         }
     }
 
     public class LetKeywordToken : Token
     {
-        public override string RegularExpression => "let";
-
-        public override int Priority { get; } = 0;
-        public override Token FromText(string literalText)
+        public LetKeywordToken(string literalText) : base(literalText)
         {
-            return new LetKeywordToken {LiteralText = literalText};
         }
     }
 
     public class IdentifierToken : Token
     {
-        public override string RegularExpression => "[a-zA-Z][a-zA-Z0-9]*";
-
-        public override int Priority { get; } = 1;
-        public override Token FromText(string literalText)
+        public IdentifierToken(string literalText) : base(literalText)
         {
-            return new IdentifierToken { LiteralText = literalText };
         }
     }
 
     public class WhitespaceToken : Token
     {
-        public override string RegularExpression => "[ \t\r\n]+";
-
-        public override int Priority { get; } = 0;
-        public override Token FromText(string literalText)
+        public WhitespaceToken(string literalText) : base(literalText)
         {
-            return new WhitespaceToken { LiteralText = literalText };
         }
     }
 
     public class SingleEqualsToken : Token
     {
-        public override string RegularExpression => "=";
-
-        public override int Priority { get; } = 0;
-        public override Token FromText(string literalText)
+        public SingleEqualsToken(string literalText) : base(literalText)
         {
-            return new SingleEqualsToken { LiteralText = literalText };
         }
     }
 
     public class ColonKeywordToken : Token
     {
-        public override string RegularExpression => ":";
-
-        public override int Priority { get; } = 0;
-        public override Token FromText(string literalText)
-        { 
-            return new ColonKeywordToken { LiteralText = literalText };
+        public ColonKeywordToken(string literalText) : base(literalText)
+        {
         }
     }
 
     public class DecimalLiteralToken : Token
     {
-        public override string RegularExpression => "[0-9]+(\\.[0-9]+)?";
-
-        public override int Priority { get; } = 0;
-        public override Token FromText(string literalText)
+        public DecimalLiteralToken(string literalText) : base(literalText)
         {
-            return new DecimalLiteralToken { LiteralText = literalText };
         }
     }
 }
