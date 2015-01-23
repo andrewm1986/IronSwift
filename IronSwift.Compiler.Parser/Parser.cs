@@ -25,7 +25,7 @@ namespace IronSwift.Compiler.Parser
             return parser;
         }
 
-        public DocumentNode GetTree()
+        public Node GetTree()
         {
             return new DocumentNode();
         }

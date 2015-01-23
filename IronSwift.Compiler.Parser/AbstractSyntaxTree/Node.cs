@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IronSwift.Compiler.Parser.AbstractSyntaxTree
 {
-    public class DocumentNode : Node
+    public abstract class Node
     {
     }
 }

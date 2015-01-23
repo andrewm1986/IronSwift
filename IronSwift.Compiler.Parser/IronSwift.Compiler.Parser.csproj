@@ -40,8 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractSyntaxTree\Node - Copy.cs" />
     <Compile Include="AbstractSyntaxTree\Node.cs" />
+    <Compile Include="AbstractSyntaxTree\DocumentNode.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
