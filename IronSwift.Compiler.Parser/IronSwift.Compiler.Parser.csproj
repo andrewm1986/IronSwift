@@ -40,8 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractSyntaxTree\DecimalLiteral.cs" />
+    <Compile Include="AbstractSyntaxTree\Expression.cs" />
     <Compile Include="AbstractSyntaxTree\Node.cs" />
-    <Compile Include="AbstractSyntaxTree\DocumentNode.cs" />
+    <Compile Include="AbstractSyntaxTree\Document.cs" />
+    <Compile Include="Helpers\ITwoWayEnumerator.cs" />
+    <Compile Include="Helpers\TwoWayEnumerator.cs" />
+    <Compile Include="UnexpectedTokenException.cs" />
+    <Compile Include="AbstractSyntaxTree\VariableDeclaration.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

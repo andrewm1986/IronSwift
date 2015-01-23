@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IronSwift.Compiler.Parser.AbstractSyntaxTree
+namespace IronSwift.Compiler.Parser.Helpers
 {
-    public class DocumentNode : Node
+    public interface ITwoWayEnumerator<out T> : IEnumerator<T>
     {
+        bool MovePrevious();
     }
 }

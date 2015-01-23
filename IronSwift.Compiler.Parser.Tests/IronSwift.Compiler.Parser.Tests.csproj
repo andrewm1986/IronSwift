@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5DE4FE7A-3382-44E1-9B06-FD35EFE59A9F}</ProjectGuid>
+    <ProjectGuid>{C8DA5315-62DA-41A3-A62F-C89DB2F3E2DD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IronSwift.Compiler.Lexer.Tests</RootNamespace>
-    <AssemblyName>IronSwift.Compiler.Lexer.Tests</AssemblyName>
+    <RootNamespace>IronSwift.Compiler.Parser.Tests</RootNamespace>
+    <AssemblyName>IronSwift.Compiler.Parser.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.3</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,8 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -51,18 +50,25 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="FunctionCall.cs" />
     <Compile Include="VariableDeclaration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IronSwift.Compiler.Lexer\IronSwift.Compiler.Lexer.csproj">
       <Project>{cf5c355c-17cd-4fb4-8305-d3c963efeaa8}</Project>
       <Name>IronSwift.Compiler.Lexer</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\IronSwift.Compiler.Parser\IronSwift.Compiler.Parser.csproj">
+      <Project>{41025561-587c-4fb0-ba2c-e2522d5f6afa}</Project>
+      <Name>IronSwift.Compiler.Parser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronSwift.Compiler\IronSwift.Compiler.csproj">
+      <Project>{578172ad-46d4-4d59-93d1-2edadbf2b3fb}</Project>
+      <Name>IronSwift.Compiler</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

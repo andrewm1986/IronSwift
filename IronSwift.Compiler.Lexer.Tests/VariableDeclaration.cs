@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace IronSwift.Compiler.Lexer.Tests
 {
-    public class VariableAssignment
+    public class VariableDeclaration
     {
         [SetUp]
         public void Setup()
